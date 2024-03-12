@@ -71,7 +71,7 @@ document.addEventListener("DOMContentLoaded", ()=>{
         }else if(x < 100){
             result += "0" + x;
         }else{
-            result += x;
+            result += x;git 
         }
 
         return result;
