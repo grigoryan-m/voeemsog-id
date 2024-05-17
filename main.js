@@ -3,9 +3,71 @@ document.addEventListener("DOMContentLoaded", ()=>{
     const button = document.getElementsByClassName("button")[0];
     const result = document.getElementsByClassName("result")[0];
 
+    const buttonID = document.getElementsByClassName("button")[1];
+    const resultID = document.getElementsByClassName("result")[1];
+    const id = document.getElementsByClassName("id")[0];
+
+    buttonID.addEventListener("click", ()=>{
+	resultID.value = calculateCoords(id.value);
+    });
     button.addEventListener("click", ()=>{
         result.value = calculateID(coords[0].value, coords[1].value);
     });
+
+    function calculateCoords(id){
+    	let result = "";
+
+	let x = id.split("-")[1];
+	let y = id.split("-")[0];
+	let tempY = 0;
+	// AA-001
+	if(y.charAt(0) == "A"){
+		tempY = 0;
+	}else if(y.charAt(0) == "B"){
+		tempY = 26;
+	}else if(y.charAt(0) == "C"){
+		tempY = 52;
+	}else if(y.charAt(0) == "D"){
+		tempY = 78;
+	}else if(y.charAt(0) == "E"){
+		tempY = 104;
+	}else if(y.charAt(0) == "F"){
+		tempY = 130;
+	}else if(y.charAt(0) == "G"){
+		tempY = 156;
+	}else if(y.charAt(0) == "H"){
+		tempY = 182;
+	}else if(y.charAt(0) == "I"){
+		tempY = 208;
+	}else if(y.charAt(0) == "J"){
+		tempY = 234;
+	}else if(y.charAt(0) == "K"){
+		tempY = 260;
+	}else if(y.charAt(0) == "L"){
+		tempY = 286;
+	}else if(y.charAt(0) == "M"){
+		tempY = 312;
+	}else if(y.charAt(0) == "N"){
+		tempY = 338;
+	}else if(y.charAt(0) == "O"){
+		tempY = 364;
+	}else if(y.charAt(0) == "P"){
+		tempY = 390;
+	}
+
+	result += parseInt(x) + "; ";
+	const alphabet = [];
+        for (let i = 65; i <= 90; i++) {
+            	alphabet.push(String.fromCharCode(i));
+        }
+ 	tempY += alphabet.indexOf(y.charAt(1));
+
+	result += tempY;
+
+	return result;
+    }
+
+
 
     function calculateID(x, y){
         let result = "";
